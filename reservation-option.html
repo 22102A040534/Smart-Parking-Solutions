@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>Vehicle Reservation</h1>
+        <p>Fill in your vehicle details and select your reservation time.</p>
+    </header>
+
+    <section class="section">
+        <form id="reservation-form" action="reservation-confirmation.html" method="GET">
+            <!-- Vehicle Type Selection -->
+            <label for="vehicle-type">Vehicle Type:</label>
+            <select id="vehicle-type" name="vehicle-type" required>
+                <option value="car">Car</option>
+                <option value="bus">Bus</option>
+                <option value="bike">Bike</option>
+            </select>
+
+            <!-- Vehicle Brand -->
+            <label for="brand">Vehicle Brand:</label>
+            <input type="text" id="brand" name="brand" placeholder="e.g., Toyota" required>
+
+            <!-- Vehicle Model -->
+            <label for="model">Vehicle Model:</label>
+            <input type="text" id="model" name="model" placeholder="e.g., Corolla" required>
+
+            <!-- Registration Number -->
+            <label for="registration-number">Registration Number:</label>
+            <input type="text" id="registration-number" name="registration-number" placeholder="e.g., ABC-1234" required>
+
+            <!-- Reservation Time -->
+            <label for="reservation-time">Reservation Time:</label>
+            <input type="time" id="reservation-time" name="reservation-time" required>
+
+            <!-- Reservation Duration -->
+            <label for="reservation-duration">Reservation Duration (in hours):</label>
+            <input type="number" id="reservation-duration" name="reservation-duration" min="1" max="24" required>
+
+            <button type="submit">Submit Reservation</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Smart Parking Solutions. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

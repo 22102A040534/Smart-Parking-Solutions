@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Friendly Parking Area</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0fff0; /* Light green background for eco-friendly vibe */
+            color: #333;
+        }
+
+        .header {
+            background-color: #66bb6a; /* Changed to a lighter green for eco-friendly theme */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        #parking-area {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .slot {
+            border-radius: 8px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s, transform 0.2s;
+            background-color: #e8f5e9;
+            box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
+        }
+
+        .car {
+            background-color: #b3e5fc; /* Light blue for cars */
+            border: 2px dashed #81d4fa;
+        }
+
+        .bus {
+            background-color: #fff9c4; /* Light yellow for buses */
+            border: 2px dashed #ffeb3b;
+        }
+
+        .bike {
+            background-color: #ffccbc; /* Coral for bikes */
+            border: 2px dashed #ff8a65;
+        }
+
+        .slot.selected {
+            border-color: #388e3c;
+            background-color: #c8e6c9; /* Lighter green when selected */
+            transform: scale(1.05);
+        }
+
+        .charging-icon {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 18px;
+            color: #4CAF50;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #a5d6a7;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Eco-Friendly Parking Area</h1>
+        <p>Select your parking slot.</p>
+    </header>
+
+    <section class="section">
+        <h2>Parking Slots</h2>
+        <div id="parking-area">
+            <!-- Car Slots -->
+            <div class="slot car" id="C1" onclick="selectSlot('C1')">C1 <span class="charging-icon">🔋</span></div>
+            <div class="slot car" id="C2" onclick="selectSlot('C2')">C2</div>
+            <div class="slot car" id="C3" onclick="selectSlot('C3')">C3 <span class="charging-icon">🔋</span></div>
+            <div class="slot car" id="C4" onclick="selectSlot('C4')">C4</div>
+
+            <!-- Bus Slots -->
+            <div class="slot bus" id="B1" onclick="selectSlot('B1')">B1 <span class="charging-icon">🔋</span></div>
+            <div class="slot bus" id="B2" onclick="selectSlot('B2')">B2</div>
+            <div class="slot bus" id="B3" onclick="selectSlot('B3')">B3</div>
+            <div class="slot bus" id="B4" onclick="selectSlot('B4')">B4 <span class="charging-icon">🔋</span></div>
+
+            <!-- Bike Slots -->
+            <div class="slot bike" id="M1" onclick="selectSlot('M1')">M1 <span class="charging-icon">🔋</span></div>
+            <div class="slot bike" id="M2" onclick="selectSlot('M2')">M2</div>
+            <div class="slot bike" id="M3" onclick="selectSlot('M3')">M3 <span class="charging-icon">🔋</span></div>
+            <div class="slot bike" id="M4" onclick="selectSlot('M4')">M4</div>
+        </div>
+
+        <button id="confirm-btn" style="display:none;" onclick="confirmSelection()">Confirm Slot Selection</button>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Smart Parking Solutions. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let selectedSlot = null;
+
+        // Select a parking slot
+        function selectSlot(slotId) {
+            if (selectedSlot) {
+                document.getElementById(selectedSlot).classList.remove('selected');
+            }
+            selectedSlot = slotId;
+            document.getElementById(slotId).classList.add('selected');
+            document.getElementById('confirm-btn').style.display = 'block';
+        }
+
+        // Confirm slot selection and redirect to confirmation page
+        function confirmSelection() {
+            const vehicleType = new URLSearchParams(window.location.search).get('vehicle-type');
+            const brand = new URLSearchParams(window.location.search).get('brand');
+            const model = new URLSearchParams(window.location.search).get('model');
+            const registrationNumber = new URLSearchParams(window.location.search).get('registration-number');
+            const reservationTime = new URLSearchParams(window.location.search).get('reservation-time');
+            const reservationDuration = new URLSearchParams(window.location.search).get('reservation-duration');
+            const bookingId = 'MBU-' + Math.random().toString(36).substring(2, 10).toUpperCase();
+            const date = new Date().toLocaleDateString();
+
+            if (selectedSlot) {
+                window.location.href = `eco-friendly-confirmation.html?vehicle-type=${vehicleType}&brand=${brand}&model=${model}&registration-number=${registrationNumber}&reservation-time=${reservationTime}&reservation-duration=${reservationDuration}&slot=${selectedSlot}&booking-id=${bookingId}&date=${date}`;
+            } else {
+                alert("Please select a parking slot before proceeding.");
+            }
+        }
+    </script>
+
+</body>
+</html>
+

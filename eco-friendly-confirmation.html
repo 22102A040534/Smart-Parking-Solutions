@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Friendly Reservation Confirmation</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50; /* Green for eco-friendly theme */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .confirmation-details {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .payment-options {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .cta-button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .cta-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Eco-Friendly Reservation Confirmation</h1>
+    </header>
+
+    <section class="confirmation-details">
+        <h2>Your Booking Details</h2>
+        <p><strong>Vehicle Type:</strong> <span id="vehicle-type"></span></p>
+        <p><strong>Brand:</strong> <span id="brand"></span></p>
+        <p><strong>Model:</strong> <span id="model"></span></p>
+        <p><strong>Registration Number:</strong> <span id="registration-number"></span></p>
+        <p><strong>Reservation Time:</strong> <span id="reservation-time"></span></p>
+        <p><strong>Reservation Duration:</strong> <span id="reservation-duration"></span> hours</p>
+        <p><strong>Selected Slot:</strong> <span id="slot"></span></p>
+        <p><strong>Booking ID:</strong> <span id="booking-id"></span></p>
+        <p><strong>Date:</strong> <span id="date"></span></p>
+    </section>
+
+    <div class="payment-options">
+        <h2>Payment Options</h2>
+        <p>You can proceed with online payment or pay in cash at the parking spot.</p>
+        <button id="pay-online" class="cta-button">Pay Online</button>
+        <button id="pay-cash" class="cta-button">Pay Cash at the Spot</button>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Smart Parking Solutions. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('vehicle-type').textContent = urlParams.get('vehicle-type');
+        document.getElementById('brand').textContent = urlParams.get('brand');
+        document.getElementById('model').textContent = urlParams.get('model');
+        document.getElementById('registration-number').textContent = urlParams.get('registration-number');
+        document.getElementById('reservation-time').textContent = urlParams.get('reservation-time');
+        document.getElementById('reservation-duration').textContent = urlParams.get('reservation-duration');
+        document.getElementById('slot').textContent = urlParams.get('slot');
+        document.getElementById('booking-id').textContent = urlParams.get('booking-id');
+        document.getElementById('date').textContent = urlParams.get('date');
+
+        // Handle button clicks
+        document.getElementById('pay-online').onclick = function() {
+            // Redirect to the seamless payments page
+            window.location.href = "seamless-payments.html";
+        };
+
+        document.getElementById('pay-cash').onclick = function() {
+            // Show an alert for cash payment option
+            alert("You can pay in cash at the parking spot.");
+            // Optionally, redirect to a dashboard or home page
+            // window.location.href = "dashboard.html";
+        };
+    </script>
+
+</body>
+</html>

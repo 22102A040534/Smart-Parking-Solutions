@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohan Babu University Parking</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>Mohan Babu University Parking</h1>
+    </header>
+
+    <section class="section">
+        <h2>Parking Availability Status</h2>
+
+        <div class="availability-info">
+            <div class="info-item">
+                <strong>Total Spaces:</strong>
+                <span id="total-spaces">200</span>
+            </div>
+            <div class="info-item">
+                <strong>Available Spaces:</strong>
+                <span id="available-spaces">150</span>
+            </div>
+            <div class="info-item">
+                <strong>Reserved Spaces:</strong>
+                <span id="reserved-spaces">50</span>
+            </div>
+        </div>
+
+        <h3>Reserved Space Details</h3>
+        <div class="reserved-spaces-section">
+            <h4><i class="fas fa-car"></i> Cars</h4>
+            <table class="reserved-spaces">
+                <thead>
+                    <tr>
+                        <th>Slot Number</th>
+                        <th>Duration (HH:MM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>A1</td>
+                        <td>02:00</td>
+                    </tr>
+                    <tr>
+                        <td>A2</td>
+                        <td>01:30</td>
+                    </tr>
+                    <tr>
+                        <td>A3</td>
+                        <td>03:15</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="expected-vacant-time">
+                <strong>Next Expected Vacant Slot:</strong>
+                <span id="next-vacant-slot-cars">A4</span>
+                <strong>in:</strong>
+                <span id="next-vacant-time-cars">10 minutes</span>
+            </div>
+
+            <h4><i class="fas fa-bus"></i> Buses</h4>
+            <table class="reserved-spaces">
+                <thead>
+                    <tr>
+                        <th>Slot Number</th>
+                        <th>Duration (HH:MM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>B1</td>
+                        <td>01:45</td>
+                    </tr>
+                    <tr>
+                        <td>B2</td>
+                        <td>02:30</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="expected-vacant-time">
+                <strong>Next Expected Vacant Slot:</strong>
+                <span id="next-vacant-slot-buses">B3</span>
+                <strong>in:</strong>
+                <span id="next-vacant-time-buses">15 minutes</span>
+            </div>
+
+            <h4><i class="fas fa-motorcycle"></i> Other Vehicles</h4>
+            <table class="reserved-spaces">
+                <thead>
+                    <tr>
+                        <th>Slot Number</th>
+                        <th>Duration (HH:MM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>C1</td>
+                        <td>01:00</td>
+                    </tr>
+                    <tr>
+                        <td>C2</td>
+                        <td>02:15</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="expected-vacant-time">
+                <strong>Next Expected Vacant Slot:</strong>
+                <span id="next-vacant-slot-other">C3</span>
+                <strong>in:</strong>
+                <span id="next-vacant-time-other">5 minutes</span>
+            </div>
+
+            <h4><i class="fas fa-charging-station"></i> Electric Vehicles</h4>
+            <table class="reserved-spaces">
+                <thead>
+                    <tr>
+                        <th>Slot Number</th>
+                        <th>Duration (HH:MM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>D1</td>
+                        <td>01:30</td>
+                    </tr>
+                    <tr>
+                        <td>D2</td>
+                        <td>02:00</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="expected-vacant-time">
+                <strong>Next Expected Vacant Slot:</strong>
+                <span id="next-vacant-slot-ev">D3</span>
+                <strong>in:</strong>
+                <span id="next-vacant-time-ev">20 minutes</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Smart Parking Solutions. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

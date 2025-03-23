@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Slot Selection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>Select Your Parking Slot</h1>
+        <p>Choose an available slot in your preferred parking area.</p>
+    </header>
+
+    <!-- Parking Area Selection -->
+    <section class="section">
+        <h2>Choose Parking Area</h2>
+        <div id="parking-areas">
+            <button onclick="showParkingArea('A')">Parking A</button>
+            <button onclick="showParkingArea('B')">Parking B</button>
+            <button onclick="showParkingArea('C')">Parking C</button>
+        </div>
+    </section>
+
+    <!-- Slot Selection Layout -->
+    <section id="slot-selection" class="section" style="display: none;">
+        <h2 id="parking-title"></h2>
+
+        <!-- Layout for the slots -->
+        <div id="layout">
+            <h3>Bike Parking</h3>
+            <div id="bike-slots" class="slot-grid"></div>
+            
+            <h3>Car Parking</h3>
+            <div id="car-slots" class="slot-grid"></div>
+
+            <h3>Bus Parking</h3>
+            <div id="bus-slots" class="slot-grid"></div>
+        </div>
+
+        <button onclick="confirmReservation()">Confirm Slot Selection</button>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Smart Parking Solutions. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const slots = {
+            A: { bikes: 15, cars: 30, buses: 5 },
+            B: { bikes: 15, cars: 30, buses: 5 },
+            C: { bikes: 15, cars: 30, buses: 5 },
+        };
+
+        let selectedSlot = null;
+
+        // Show parking area and load slots
+        function showParkingArea(area) {
+            document.getElementById('parking-title').innerText = `Parking ${area}`;
+            document.getElementById('slot-selection').style.display = 'block';
+            createSlots('bike-slots', slots[area].bikes, 'B', area);
+            createSlots('car-slots', slots[area].cars, 'C', area);
+            createSlots('bus-slots', slots[area].buses, 'BU', area);
+        }
+
+        // Create slots based on type
+        function createSlots(containerId, count, typePrefix, area) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = ''; 
+            for (let i = 1; i <= count; i++) {
+                const slot = document.createElement('div');
+                slot.classList.add('slot');
+                slot.id = `${area}-${typePrefix}${i}`;
+                slot.innerText = `${typePrefix}${i}`;
+                slot.onclick = () => selectSlot(slot.id);
+                container.appendChild(slot);
+            }
+        }
+
+        // Slot selection handler
+        function selectSlot(slotId) {
+            if (selectedSlot) {
+                document.getElementById(selectedSlot).classList.remove('selected');
+            }
+            selectedSlot = slotId;
+            document.getElementById(slotId).classList.add('selected');
+        }
+
+        // Confirm reservation with summary page redirection
+        function confirmReservation() {
+            if (selectedSlot) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const vehicleDetails = {
+                    vehicleType: urlParams.get('vehicle-type'),
+                    brand: urlParams.get('brand'),
+                    model: urlParams.get('model'),
+                    registrationNumber: urlParams.get('registration-number'),
+                    reservationTime: urlParams.get('reservation-time'),
+                    reservationDuration: urlParams.get('reservation-duration')
+                };
+                const confirmationUrl = `confirmation.html?slot=${selectedSlot}&vehicle-type=${vehicleDetails.vehicleType}&brand=${vehicleDetails.brand}&model=${vehicleDetails.model}&registration-number=${vehicleDetails.registrationNumber}&reservation-time=${vehicleDetails.reservationTime}&reservation-duration=${vehicleDetails.reservationDuration}`;
+                window.location.href = confirmationUrl;
+            } else {
+                alert('Please select a slot to reserve.');
+            }
+        }
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Friendly Vehicle Reservation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <h1>Eco-Friendly Vehicle Reservation</h1>
+        <p>Fill in your vehicle details and select your reservation time.</p>
+    </header>
+
+    <!-- Reservation Form Section -->
+    <section class="section">
+        <form id="eco-reservation-form" action="eco-friendly-parking.html" method="GET">
+            <label for="vehicle-type">Vehicle Type:</label>
+            <select id="vehicle-type" name="vehicle-type" required>
+                <option value="E-car">E-Car</option>
+                <option value="E-bus">E-Bus</option>
+                <option value="Hyb-bike">Bike</option>
+            </select>
+
+            <label for="brand">Vehicle Brand:</label>
+            <input type="text" id="brand" name="brand" placeholder="e.g., Tesla" required>
+
+            <label for="model">Vehicle Model:</label>
+            <input type="text" id="model" name="model" placeholder="e.g., Model 3" required>
+
+            <label for="registration-number">Registration Number:</label>
+            <input type="text" id="registration-number" name="registration-number" placeholder="e.g., ABC-1234" required>
+
+            <label for="reservation-time">Reservation Time:</label>
+            <input type="time" id="reservation-time" name="reservation-time" required>
+
+            <label for="reservation-duration">Reservation Duration (in hours):</label>
+            <input type="number" id="reservation-duration" name="reservation-duration" min="1" max="24" required>
+
+            <button type="submit">Submit Reservation</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2024 Smart Parking Solutions. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
